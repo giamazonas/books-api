@@ -1,8 +1,12 @@
+import 'dotenv/config.js'
 import createError from 'http-errors'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
+import './config/database.js'
+// import mongoose from 'mongoose'
+// import cors from 'cors'
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
