@@ -5,12 +5,10 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
 import './config/database.js'
-// import mongoose from 'mongoose'
-// import cors from 'cors'
+import cors from 'cors'
 
 // import routers
-import { router as indexRouter } from './routes/index.js'
-import { router as usersRouter } from './routes/users.js'
+import { router as booksRouter } from './routes/books.js'
 
 // set up app
 const app = express()
@@ -23,6 +21,7 @@ app.set(
 app.set('view engine', 'ejs')
 
 // middleware
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -33,8 +32,7 @@ app.use(
 )
 
 // mounted routers
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/', booksRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
